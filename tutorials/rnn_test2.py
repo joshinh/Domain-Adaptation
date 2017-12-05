@@ -45,7 +45,7 @@ predictions_series = [tf.nn.softmax(logits) for logits in logits_series]
 losses = [tf.nn.sparse_softmax_cross_entropy_with_logits(logits=_logits, labels=_labels) for _logits, _labels in zip(logits_series,labels_series)]
 total_loss = tf.reduce_mean(losses)
 
-train_step = tf.train.AdagradOptimizer(0.1).minimize(total_loss)
+train_step = tf.train.AdagradOptimizer(0.3).minimize(total_loss)
 
 with tf.Session() as sess:
     sess.run(tf.initialize_all_variables())
